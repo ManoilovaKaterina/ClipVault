@@ -1,0 +1,73 @@
+<Window x:Class="ClipboardManager.Views.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About ClipVault"
+        Height="300"
+        Width="350"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent">
+
+    <Border Background="{StaticResource PrimaryBackground}" 
+            CornerRadius="12" 
+            BorderBrush="{StaticResource BorderColor}" 
+            BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Custom Title Bar -->
+            <Border Grid.Row="0" 
+                    Background="{StaticResource SecondaryBackground}" 
+                    CornerRadius="12,12,0,0"
+                    Height="40"
+                    MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid>
+                    <TextBlock Text="About" 
+                               FontSize="14" 
+                               FontWeight="Medium" 
+                               Foreground="{StaticResource TextPrimary}"
+                               VerticalAlignment="Center"
+                               Margin="16,0,0,0"/>
+                    <Button Content="✕" 
+                            Style="{StaticResource CloseButton}"
+                            Click="CloseButton_Click"
+                            HorizontalAlignment="Right"
+                            ToolTip="Close"/>
+                </Grid>
+            </Border>
+
+            <!-- Content -->
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+                <TextBlock Text="ClipVault Clipboard Manager" FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center"/>
+                <TextBlock Text="Version 1.0.0" FontSize="12" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center" Margin="0,5,0,15"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Developed by Kateryna Manoilova" FontSize="12" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                    <Button x:Name="GithubLink" Content="&#xE71B;" Style="{StaticResource BorderlessIconButton}" FontSize="12" Click="GithubLink_Click" ToolTip="Visit GitHub Profile"/>
+                </StackPanel>
+                
+                <TextBlock Text="A simple yet powerful clipboard management tool." FontSize="12" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+
+                <TextBlock Text="Released under MIT License" FontSize="10" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                    <TextBlock Text="App icons by Kiranshastry - Flaticon" FontSize="10" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                    <Button x:Name="FlaticonLink" Content="&#xE71B;" Style="{StaticResource BorderlessIconButton}" FontSize="10" Click="FlaticonLink_Click" ToolTip="Visit Flaticon Page"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Close Button -->
+            <Button Grid.Row="2" 
+                    Content="Close" 
+                    Style="{StaticResource ModernButton}" 
+                    Click="CloseButton_Click" 
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,15"/>
+        </Grid>
+    </Border>
+</Window>

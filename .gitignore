@@ -1,0 +1,27 @@
+# Visual Studio / .NET Core
+.vs/
+bin/
+obj/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.userprefs
+*.usertasks
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# NuGet packages folder
+packages/
+*.nupkg
