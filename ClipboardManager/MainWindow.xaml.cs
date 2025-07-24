@@ -120,8 +120,20 @@ namespace ClipboardManager
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            var aboutWindow = new AboutWindow();
+            var aboutWindow = new AboutWindow
+            {
+                Owner = this
+            };
             aboutWindow.ShowDialog();
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var settingsWindow = new SettingsWindow
+            {
+                Owner = this
+            };
+            settingsWindow.ShowDialog();
         }
 
         private void ClipboardListView_MouseWheel(object sender, MouseWheelEventArgs e)
