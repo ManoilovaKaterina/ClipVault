@@ -1,4 +1,5 @@
 using System.Windows;
+using Microsoft.Win32;
 
 namespace ClipboardManager
 {
@@ -9,6 +10,9 @@ namespace ClipboardManager
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            key?.SetValue("ClipVault", $"\"{Environment.ProcessPath}\"");
 
             // Ensure only one instance runs
             var currentProcess = System.Diagnostics.Process.GetCurrentProcess();
