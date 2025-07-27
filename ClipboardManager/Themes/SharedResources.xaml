@@ -10,25 +10,11 @@
     <local:NotImageAndNotFileToVisibilityConverter x:Key="NotImageAndNotFileToVisibilityConverter"/>
     <local:PinnedHeaderConverter x:Key="PinnedHeaderConverter"/>
 
-    <!-- Modern Dark Theme Colors -->
-    <SolidColorBrush x:Key="PrimaryBackground" Color="#1a1d29"/>
-    <SolidColorBrush x:Key="SecondaryBackground" Color="#252837"/>
-    <SolidColorBrush x:Key="CardBackground" Color="#1b1e2a"/>
-    <SolidColorBrush x:Key="AccentTeal" Color="#1dd1a1"/>
-    <SolidColorBrush x:Key="AccentPurple" Color="#8b5cf6"/>
-    <SolidColorBrush x:Key="AccentBlue" Color="#3b82f6"/>
-    <SolidColorBrush x:Key="TextPrimary" Color="#f8fafc"/>
-    <SolidColorBrush x:Key="TextSecondary" Color="#94a3b8"/>
-    <SolidColorBrush x:Key="TextMuted" Color="#64748b"/>
-    <SolidColorBrush x:Key="BorderColor" Color="#374151"/>
-    <SolidColorBrush x:Key="HoverColor" Color="#374151"/>
-    <SolidColorBrush x:Key="DangerColor" Color="#ef4444"/>
-
     <!-- Modern Button Style -->
     <Style x:Key="ModernButton" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource SecondaryBackground}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="8,6"/>
         <Setter Property="FontSize" Value="12"/>
@@ -47,7 +33,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource HoverColor}"/>
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource HoverColor}"/>
                             <Setter Property="Effect">
                                 <Setter.Value>
                                     <DropShadowEffect Color="#1dd1a1" ShadowDepth="0" BlurRadius="6" Opacity="0.3"/>
@@ -55,7 +41,7 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource BorderColor}"/>
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BorderColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -66,7 +52,7 @@
     <!-- Title Bar Button Style -->
     <Style x:Key="TitleBarButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="FontSize" Value="12"/>
@@ -86,8 +72,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource HoverColor}"/>
-                            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource HoverColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -109,7 +95,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource DangerColor}"/>
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource DangerColor}"/>
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -127,9 +113,9 @@
 
     <!-- Fixed TextBox Style with proper padding -->
     <Style x:Key="CompactTextBox" TargetType="TextBox">
-        <Setter Property="Background" Value="{StaticResource SecondaryBackground}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Height" Value="28"/>
@@ -149,7 +135,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentTeal}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource AccentTeal}"/>
                             <Setter Property="Effect">
                                 <Setter.Value>
                                     <DropShadowEffect Color="#1dd1a1" ShadowDepth="0" BlurRadius="6" Opacity="0.3"/>
@@ -164,9 +150,9 @@
 
     <!-- Compact Danger Button -->
     <Style x:Key="CompactDangerButton" BasedOn="{StaticResource CompactButton}" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource DangerColor}"/>
+        <Setter Property="Background" Value="{DynamicResource DangerColor}"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="BorderBrush" Value="{StaticResource DangerColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource DangerColor}"/>
     </Style>
 
     <!-- Aligned Danger Button -->
@@ -186,7 +172,7 @@
     <!-- Modern TabItem Style -->
     <Style x:Key="ModernTabItem" TargetType="TabItem">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="12,6"/>
         <Setter Property="FontSize" Value="11"/>
@@ -207,12 +193,12 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource AccentTeal}"/>
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource AccentTeal}"/>
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource HoverColor}"/>
-                            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource HoverColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -253,13 +239,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ScrollBar">
                     <Grid>
-                        <Rectangle Fill="{StaticResource BorderColor}" Width="2" HorizontalAlignment="Center"/>
+                        <Rectangle Fill="{DynamicResource BorderColor}" Width="2" HorizontalAlignment="Center"/>
                         <Track Name="PART_Track" IsDirectionReversed="True">
                             <Track.Thumb>
                                 <Thumb>
                                     <Thumb.Template>
                                         <ControlTemplate TargetType="Thumb">
-                                            <Rectangle Fill="{StaticResource AccentTeal}" 
+                                            <Rectangle Fill="{DynamicResource AccentTeal}" 
                                                        Width="4" 
                                                        RadiusX="2" 
                                                        RadiusY="2"
@@ -278,7 +264,7 @@
     <!-- Borderless Icon Button Style -->
     <Style x:Key="BorderlessIconButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="FontSize" Value="16"/>
@@ -300,7 +286,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource AccentTeal}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource AccentTeal}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -310,18 +296,20 @@
 
     <!-- Pin Icon Button Style -->
     <Style x:Key="PinIconButton" TargetType="Button" BasedOn="{StaticResource BorderlessIconButton}">
-        <Setter Property="Content" Value="&#xE840;"/> <!-- Unpinned Icon -->
+        <Setter Property="Content" Value="&#xE840;"/>
+        <!-- Unpinned Icon -->
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsPinned}" Value="True">
-                <Setter Property="Content" Value="&#xE718;"/> <!-- Pinned Icon -->
-                <Setter Property="Foreground" Value="{StaticResource AccentPurple}"/>
+                <Setter Property="Content" Value="&#xE718;"/>
+                <!-- Pinned Icon -->
+                <Setter Property="Foreground" Value="{DynamicResource AccentPurple}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
     <!-- Modern Card Style -->
     <Style x:Key="ModernCard" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource CardBackground}"/>
+        <Setter Property="Background" Value="{DynamicResource CardBackground}"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="12"/>
         <Setter Property="Effect">
@@ -333,9 +321,9 @@
 
     <!-- Modern ToggleSwitch Style -->
     <Style x:Key="ModernToggleSwitch" TargetType="ToggleButton">
-        <Setter Property="Background" Value="{StaticResource SecondaryBackground}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height" Value="24"/>
         <Setter Property="Width" Value="44"/>
@@ -349,7 +337,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="12">
                         <Ellipse x:Name="thumb" 
-                                 Fill="{StaticResource TextSecondary}" 
+                                 Fill="{DynamicResource TextSecondary}" 
                                  Width="16" 
                                  Height="16" 
                                  HorizontalAlignment="Left"
@@ -357,12 +345,12 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource AccentTeal}"/>
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource AccentTeal}"/>
                             <Setter TargetName="thumb" Property="Fill" Value="White"/>
                             <Setter TargetName="thumb" Property="HorizontalAlignment" Value="Right"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentTeal}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource AccentTeal}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

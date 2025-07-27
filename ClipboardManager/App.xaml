@@ -6,6 +6,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!-- Theme will be loaded dynamically by ThemeManager -->
+                <!-- Shared styles and converters -->
+                <ResourceDictionary Source="Themes/DarkTheme.xaml" />
+                <ResourceDictionary Source="Themes/LightTheme.xaml" />
                 <ResourceDictionary Source="Themes/SharedResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

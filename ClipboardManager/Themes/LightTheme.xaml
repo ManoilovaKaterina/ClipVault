@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!-- Light Theme Colors -->
+	<SolidColorBrush x:Key="PrimaryBackground" Color="#ffffff"/>
+	<SolidColorBrush x:Key="SecondaryBackground" Color="#f8fafc"/>
+	<SolidColorBrush x:Key="CardBackground" Color="#ffffff"/>
+	<SolidColorBrush x:Key="AccentTeal" Color="#059669"/>
+	<SolidColorBrush x:Key="AccentPurple" Color="#7c3aed"/>
+	<SolidColorBrush x:Key="AccentBlue" Color="#2563eb"/>
+	<SolidColorBrush x:Key="TextPrimary" Color="#1e293b"/>
+	<SolidColorBrush x:Key="TextSecondary" Color="#475569"/>
+	<SolidColorBrush x:Key="TextMuted" Color="#64748b"/>
+	<SolidColorBrush x:Key="BorderColor" Color="#e2e8f0"/>
+	<SolidColorBrush x:Key="HoverColor" Color="#f1f5f9"/>
+	<SolidColorBrush x:Key="DangerColor" Color="#dc2626"/>
+
+</ResourceDictionary>

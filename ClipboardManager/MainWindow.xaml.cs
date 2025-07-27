@@ -81,7 +81,7 @@ namespace ClipboardManager
             Dispatcher.Invoke(() =>
             {
                 _viewModel.AddNewItem(e);
-                _trayManager?.ShowNotification("Clipboard Manager", "New item added to clipboard history");
+                //_trayManager?.ShowNotification("Clipboard Manager", "New item added to clipboard history");
             });
         }
 

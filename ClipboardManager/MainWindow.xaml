@@ -18,6 +18,7 @@
         <local:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
         <local:FilePathsConverter x:Key="FilePathsConverter"/>
         <local:NotImageAndNotFileToVisibilityConverter x:Key="NotImageAndNotFileToVisibilityConverter"/>
+        <local:PinnedHeaderConverter x:Key="PinnedHeaderConverter"/>
 
         <CollectionViewSource x:Key="GroupedItems" Source="{Binding FilteredItems}">
             <CollectionViewSource.GroupDescriptions>
@@ -27,9 +28,9 @@
     </Window.Resources>
 
     <!-- Main Window Border with rounded corners -->
-    <Border Background="{StaticResource PrimaryBackground}" 
+    <Border Background="{DynamicResource PrimaryBackground}" 
             CornerRadius="12" 
-            BorderBrush="{StaticResource BorderColor}" 
+            BorderBrush="{DynamicResource BorderColor}" 
             BorderThickness="1">
         <Border.Effect>
             <DropShadowEffect Color="#000000" ShadowDepth="4" BlurRadius="20" Opacity="0.5"/>
@@ -45,7 +46,7 @@
 
             <!-- Custom Title Bar -->
             <Border Grid.Row="0" 
-                    Background="{StaticResource SecondaryBackground}" 
+                    Background="{DynamicResource SecondaryBackground}" 
                     CornerRadius="12,12,0,0"
                     Height="40"
                     MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
@@ -60,7 +61,7 @@
                                Text="ClipVault Clipboard Manager" 
                                FontSize="14" 
                                FontWeight="Medium" 
-                               Foreground="{StaticResource TextPrimary}"
+                               Foreground="{DynamicResource TextPrimary}"
                                VerticalAlignment="Center"
                                Margin="16,0,0,0"/>
 
@@ -81,7 +82,7 @@
             </Border>
 
             <!-- Header Section -->
-            <Border Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="16,12">
+            <Border Grid.Row="1" Background="{DynamicResource SecondaryBackground}" Padding="16,12">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -97,7 +98,7 @@
                         <TextBlock Text="&#xE721;" 
                                    FontFamily="Segoe MDL2 Assets" 
                                    FontSize="12"
-                                   Foreground="{StaticResource TextMuted}"
+                                   Foreground="{DynamicResource TextMuted}"
                                    IsHitTestVisible="False"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
@@ -118,7 +119,7 @@
                             <TabItem Header="Images" Style="{StaticResource ModernTabItem}"/>
                             <TabItem Header="Files" Style="{StaticResource ModernTabItem}"/>
                         </TabControl>
-                        
+
                         <Button Grid.Column="1" Content="Clear All" 
                                 Command="{Binding ClearHistoryCommand}"
                                 Style="{StaticResource AlignedDangerButton}"
@@ -135,7 +136,7 @@
                           Style="{StaticResource ModernListView}"
                           Padding="6"
                           MouseWheel="ClipboardListView_MouseWheel"
-                          Background="{StaticResource PrimaryBackground}">
+                          Background="{DynamicResource PrimaryBackground}">
                     <ListView.Resources>
                         <Style TargetType="ScrollBar" BasedOn="{StaticResource CustomScrollBar}"/>
                     </ListView.Resources>
@@ -146,7 +147,7 @@
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Name, Converter={StaticResource PinnedHeaderConverter}}"
                                                FontWeight="Bold"
-                                               Foreground="{StaticResource AccentTeal}"
+                                               Foreground="{DynamicResource AccentTeal}"
                                                Margin="5,10,0,5"/>
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
@@ -157,7 +158,7 @@
                         <DataTemplate>
                             <Border Style="{StaticResource ModernCard}" 
                                     Margin="6,3" 
-                                    Background="{StaticResource CardBackground}">
+                                    Background="{DynamicResource CardBackground}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -175,7 +176,7 @@
                                                    FontSize="12" 
                                                    TextWrapping="Wrap"
                                                    MaxHeight="60"
-                                                   Foreground="{StaticResource TextPrimary}"
+                                                   Foreground="{DynamicResource TextPrimary}"
                                                    LineHeight="16">
                                             <TextBlock.Visibility>
                                                 <MultiBinding Converter="{StaticResource NotImageAndNotFileToVisibilityConverter}">
@@ -186,7 +187,7 @@
                                         </TextBlock>
 
                                         <!-- Image Content -->
-                                        <Border Background="{StaticResource SecondaryBackground}" 
+                                        <Border Background="{DynamicResource SecondaryBackground}" 
                                                 CornerRadius="6"
                                                 MaxHeight="60"
                                                 HorizontalAlignment="Left"
@@ -200,7 +201,7 @@
                                         </Border>
 
                                         <!-- File Content -->
-                                        <Border Background="{StaticResource SecondaryBackground}"
+                                        <Border Background="{DynamicResource SecondaryBackground}"
                                                 CornerRadius="6"
                                                 Padding="8"
                                                 HorizontalAlignment="Left"
@@ -209,7 +210,7 @@
                                                        FontSize="12"
                                                        TextWrapping="Wrap"
                                                        MaxHeight="60"
-                                                       Foreground="{StaticResource TextPrimary}"/>
+                                                       Foreground="{DynamicResource TextPrimary}"/>
                                         </Border>
                                     </Grid>
 
@@ -217,11 +218,11 @@
                                     <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,8,0,0">
                                         <TextBlock Text="{Binding Timestamp, StringFormat='{}{0:MM/dd HH:mm}'}"
                                                    FontSize="10" 
-                                                   Foreground="{StaticResource TextMuted}"/>
+                                                   Foreground="{DynamicResource TextMuted}"/>
 
                                         <TextBlock Text="📌"
                                                    FontSize="10" 
-                                                   Foreground="{StaticResource TextSecondary}"
+                                                   Foreground="{DynamicResource TextSecondary}"
                                                    Margin="8,0,0,0"
                                                    Visibility="{Binding IsPinned, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     </StackPanel>
@@ -255,7 +256,7 @@
                 </ListView>
 
                 <TextBlock Text="Your clipboard history will appear here.&#x0a;Pinned items are always saved."
-                           Foreground="{StaticResource TextMuted}"
+                           Foreground="{DynamicResource TextMuted}"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            TextAlignment="Center"
@@ -275,7 +276,7 @@
 
             <!-- Status Bar -->
             <Border Grid.Row="3" 
-                    Background="{StaticResource SecondaryBackground}" 
+                    Background="{DynamicResource SecondaryBackground}" 
                     Padding="16,8"
                     CornerRadius="0,0,12,12">
                 <Grid>
@@ -287,16 +288,16 @@
                     <TextBlock Grid.Column="0"
                                Text="{Binding FilteredItems.Count, StringFormat='📊 {0} items'}" 
                                FontSize="11" 
-                               Foreground="{StaticResource TextSecondary}"
+                               Foreground="{DynamicResource TextSecondary}"
                                VerticalAlignment="Center"/>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
-                        <Ellipse Width="6" Height="6" Fill="{StaticResource AccentTeal}" Margin="0,0,6,0"/>
-                        <TextBlock Text="Active" FontSize="10" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                        <Ellipse Width="6" Height="6" Fill="{DynamicResource AccentTeal}" Margin="0,0,6,0"/>
+                        <TextBlock Text="Active" FontSize="10" Foreground="{DynamicResource TextSecondary}" VerticalAlignment="Center"/>
                         <Button Content="&#xE946;" 
                                 FontFamily="Segoe MDL2 Assets"
                                 FontSize="12"
-                                Foreground="{StaticResource TextSecondary}"
+                                Foreground="{DynamicResource TextSecondary}"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Cursor="Hand"
@@ -306,7 +307,7 @@
                         <Button Content="&#xE713;" 
                                 FontFamily="Segoe MDL2 Assets"
                                 FontSize="12"
-                                Foreground="{StaticResource TextSecondary}"
+                                Foreground="{DynamicResource TextSecondary}"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Cursor="Hand"

@@ -25,4 +25,10 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
 </Project>

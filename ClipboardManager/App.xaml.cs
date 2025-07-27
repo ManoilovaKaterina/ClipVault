@@ -1,5 +1,6 @@
-using System.Windows;
+using ClipboardManager.Services;
 using Microsoft.Win32;
+using System.Windows;
 
 namespace ClipboardManager
 {
@@ -17,7 +18,9 @@ namespace ClipboardManager
             // Ensure only one instance runs
             var currentProcess = System.Diagnostics.Process.GetCurrentProcess();
             var runningProcesses = System.Diagnostics.Process.GetProcessesByName(currentProcess.ProcessName);
-
+            
+            ThemeManager.Initialize();
+            
             if (runningProcesses.Length > 1)
             {
                 System.Windows.MessageBox.Show("Clipboard Manager is already running!", "Already Running",
