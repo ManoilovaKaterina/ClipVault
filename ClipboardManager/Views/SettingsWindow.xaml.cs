@@ -106,7 +106,14 @@ namespace ClipboardManager.Views
                     }
                     else
                     {
-                        key.DeleteValue("ClipVault", false);
+                        try
+                        {
+                            key.DeleteValue("ClipVault", false);
+                        }
+                        catch (ArgumentException)
+                        {
+                            // Value doesn't exist, which is fine
+                        }
                     }
                 }
             }
