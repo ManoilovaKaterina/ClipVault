@@ -1,0 +1,67 @@
+﻿<Window x:Class="ClipboardManager.Views.FirstRunDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Welcome to ClipVault"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent">
+
+    <Border Background="{StaticResource SecondaryBackground}" 
+            CornerRadius="12" 
+            BorderBrush="{StaticResource BorderColor}" 
+            BorderThickness="1"
+            Padding="30">
+        <Grid MinWidth="320">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Welcome Title -->
+            <TextBlock Grid.Row="0"
+                       Text="Welcome to ClipVault!" 
+                       FontSize="18" 
+                       FontWeight="Bold"
+                       Foreground="{StaticResource AccentTeal}"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15"/>
+
+            <!-- Description -->
+            <TextBlock Grid.Row="1"
+                       Text="ClipVault helps you manage your clipboard history. Would you like to start ClipVault automatically when Windows starts?" 
+                       FontSize="13" 
+                       Foreground="{StaticResource TextPrimary}"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <!-- Info Text -->
+            <TextBlock Grid.Row="2"
+                       Text="You can change this setting later in Settings." 
+                       FontSize="11" 
+                       Foreground="{StaticResource TextMuted}"
+                       TextAlignment="Center"
+                       Margin="0,0,0,25"/>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Yes, Start on Startup"
+                        x:Name="YesButton"
+                        Style="{StaticResource ModernButton}" 
+                        Click="YesButton_Click" 
+                        MinWidth="140"
+                        Margin="0,0,10,0"/>
+                <Button Content="No Thanks" 
+                        x:Name="NoButton"
+                        Style="{StaticResource AlignedDangerButton}" 
+                        Click="NoButton_Click"
+                        MinWidth="100"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

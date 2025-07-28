@@ -102,7 +102,7 @@ namespace ClipboardManager.Views
                 {
                     if (enabled)
                     {
-                        key.SetValue("ClipVault", $"\"{Environment.ProcessPath}\"");
+                        key.SetValue("ClipVault", $"\"{Environment.ProcessPath}\" --startup");
                     }
                     else
                     {

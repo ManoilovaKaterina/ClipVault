@@ -7,9 +7,11 @@ namespace ClipboardManager
     public partial class App : System.Windows.Application
     {
         public static bool IsShuttingDown { get; set; } = false;
+        public static bool StartedAtStartup { get; private set; } = false;
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            StartedAtStartup = e.Args.Length > 0 && e.Args[0] == "--startup";
             base.OnStartup(e);
 
             // Ensure only one instance runs

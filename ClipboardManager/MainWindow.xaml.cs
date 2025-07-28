@@ -16,12 +16,14 @@ namespace ClipboardManager
         private readonly ClipboardService _clipboardService;
         private readonly MainViewModel _viewModel;
         private TrayManager _trayManager;
+        private readonly SettingsService _settingsService;
 
         public MainWindow()
         {
             InitializeComponent();
             _databaseService = new DatabaseService();
             _clipboardService = new ClipboardService(_databaseService);
+            _settingsService = new SettingsService();
             _viewModel = new MainViewModel(_databaseService);
             DataContext = _viewModel;
 
@@ -35,6 +37,13 @@ namespace ClipboardManager
 
             // Set window to appear at bottom right corner
             SetWindowPosition();
+
+            if (App.StartedAtStartup)
+            {
+                WindowState = WindowState.Minimized;
+                ShowInTaskbar = false;
+                Visibility = Visibility.Hidden;
+            }
         }
 
         private void SetWindowPosition()
@@ -49,11 +58,30 @@ namespace ClipboardManager
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            // Check if this is first run and show welcome dialog (only if not started at startup)
+            if (_settingsService.IsFirstRun() && !App.StartedAtStartup)
+            {
+                var firstRunDialog = new FirstRunDialog
+                {
+                    Owner = this
+                };
+                firstRunDialog.ShowDialog();
+                _settingsService.MarkFirstRunComplete();
+            }
+
             // Start clipboard monitoring
             _clipboardService.StartMonitoring(this);
 
-            // Focus search box
-            SearchTextBox.Focus();
+            // Show startup notification if launched at startup
+            if (App.StartedAtStartup)
+            {
+                _trayManager?.ShowNotification("ClipVault", "ClipVault is now active and monitoring your clipboard.");
+            }
+            else
+            {
+                // Focus search box only if not started at startup
+                SearchTextBox.Focus();
+            }
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

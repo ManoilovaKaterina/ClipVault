@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Assets\icon.ico" />
     <Resource Include="Themes\SharedResources.xaml">
       <Generator>MSBuild:Compile</Generator>

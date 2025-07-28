@@ -61,6 +61,7 @@ namespace ClipboardManager.Utils
         {
             _mainWindow.Show();
             _mainWindow.WindowState = WindowState.Normal;
+            _mainWindow.ShowInTaskbar = true;
             _mainWindow.Activate();
         }
 
