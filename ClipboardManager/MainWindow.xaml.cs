@@ -40,9 +40,13 @@ namespace ClipboardManager
 
             if (App.StartedAtStartup)
             {
+                // Force the window to load (but keep it hidden) so that Loaded event fires
+                this.Show();
                 WindowState = WindowState.Minimized;
                 ShowInTaskbar = false;
-                Visibility = Visibility.Hidden;
+                this.Hide();
+
+                _trayManager?.ShowNotification("ClipVault", "ClipVault is now active and monitoring your clipboard.");
             }
         }
 
@@ -72,18 +76,12 @@ namespace ClipboardManager
             // Start clipboard monitoring
             _clipboardService.StartMonitoring(this);
 
-            // Show startup notification if launched at startup
-            if (App.StartedAtStartup)
+            // Focus search box only if not started at startup and window is visible
+            if (!App.StartedAtStartup)
             {
-                _trayManager?.ShowNotification("ClipVault", "ClipVault is now active and monitoring your clipboard.");
-            }
-            else
-            {
-                // Focus search box only if not started at startup
                 SearchTextBox.Focus();
             }
         }
-
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!App.IsShuttingDown)
